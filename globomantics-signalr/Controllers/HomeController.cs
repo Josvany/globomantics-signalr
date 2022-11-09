@@ -1,4 +1,5 @@
 ﻿using globomantics_signalr.Models;
+using globomantics_signalr.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,21 +7,17 @@ namespace globomantics_signalr.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IAuctionRepo _AuctionRepo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IAuctionRepo auctionRepo)
         {
-            _logger = logger;
+            _AuctionRepo = auctionRepo;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            var auctions = _AuctionRepo.GetAll();
+            return View(auctions);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

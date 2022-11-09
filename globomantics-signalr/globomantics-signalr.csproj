@@ -7,4 +7,9 @@
     <RootNamespace>globomantics_signalr</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Hubs\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
